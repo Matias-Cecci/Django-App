@@ -3,28 +3,40 @@
 {% block content %}
 
 {% if page == 'login' %}
-<div>
-    <form method="POST" action="">
-        {% csrf_token %}
-        <label>Username:</label>
-        <input type="text" name="username" placeholder="Enter username" />
-        <label>Password:</label>
-        <input type="password" name="password" placeholder="Enter password" />
+<div class="flex flex-col p-4 my-2 gap-2">
+    <div class="flex justify-center">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="my-1">
+                <label class="text-white">Username:</label>
+                <input class="rounded-lg" type="text" name="username" placeholder="Enter username" />
+            </div>
+            <div >
+                <label class="text-white">Password:</label>
+                <input class="rounded-lg" type="password" name="password" placeholder="Enter password" />
+            </div>
+            <div class="items-center">
+                <button class="px-4 py-2 border rounded w-full my-2 bg-sky-700" type="submit" value="Login">
+                    Login
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="flex justify-center gap-4">
+        <p>Haven't signed up yet?</p>
 
-        <input type="submit" value="Login" />
-
-    </form>
-
-    <p>Haven't signed up ye?</p>
-    <a href="{% url 'register' %}">Sign Up</a>
+        <a  class="text-white hover:text-black" href="{% url 'register' %}">
+            <span >Sign Up</span>
+        </a>
+    </div>
 </div>
 
 {% else %}
 
 <div>
-    <form method="POST" action="">
+    <form class="" method="POST" action="">
         {% csrf_token %}
-       {{form.as_p}}
+        {{form.as_p}}
         <input type="submit" value="Register" />
     </form>
     <p>Already signed up yet?</p>

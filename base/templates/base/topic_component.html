@@ -1,10 +1,16 @@
-<h3>Browse Topics</h3>
-<hr>
-<div>
-    <a href="{% url 'home' %}">All</a>
+<div class="flex-col gap-2 px-2">
+    <div>
+        <h3 class="text-white font-bold text-xl">Browse Topics</h3>
+        <hr>
+    </div>
+    <div class="my-2">
+        <a class="text-white hover:scale-150" href="{% url 'home' %}">
+            <span class="">All</span>
+        </a>
+    </div>
+    {% for topic in topics %}
+    <div class="mb-2">
+        <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
+    </div>
+    {% endfor %}
 </div>
-{% for topic in topics %}
-<div>
-    <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
-</div>
-{% endfor %}
